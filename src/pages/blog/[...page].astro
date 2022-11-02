@@ -1,0 +1,26 @@
+---
+// Layout Import
+import MainLayout from '../../layouts/MainLayout.astro'
+//Components
+import PostList from '../../components/PostList.astro'
+import Pagination from '../../components/Pagination.astro'
+
+const title = "Blog"
+const description = "Blog page of Tiabidi"
+export async function getStaticPaths({ paginate }) {
+    const PAGE_SIZE = 2;
+    const allPosts = await Astro.glob('../../data/*.md');
+    const allSortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+    return paginate(allSortedPosts, {
+        pageSize: PAGE_SIZE
+    })
+}
+const { page } = Astro.props
+---
+
+<MainLayout title={title} description={description} jumbo_title={title}>
+    <h2>Latest blog posts</h2>
+
+    <PostList posts={page.data} />
+    <Pagination {page} />
+</MainLayout>

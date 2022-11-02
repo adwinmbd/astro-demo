@@ -1,0 +1,50 @@
+---
+// Layout import
+import MainLayout from "../layouts/MainLayout.astro";
+// Component import
+/*
+let allPosts = await Astro.glob('../data/*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+const recentPosts = allPosts.slice(0, 3);
+const readableDate = (date) => {
+    return new Date(date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+*/
+const title = "Contact";
+const description = "Contact page of Tiabidi";
+---
+
+<MainLayout title={title} description={description} jumbo_title={title}>
+    <p>
+        You can have a contact page which uses a basic form.
+    </p>
+    <form action='#' method='POST' name='contact'>
+        <input type='hidden' name='form-name' value='contact' />
+        <ol class="field-list">
+            <li class="field-list__field-group">
+                <label for="field-name">What’s your name?</label>
+                <br>
+                <input type="text" name="name" id="field-name" required="" aria-required="true" placeholder="Jane Doe"
+                    autocomplete="name" autocorrect="off" autocapitalize="off">
+            </li>
+            <li class="field-list__field-group">
+                <label for="field-email">What’s your email address?</label>
+                <br>
+                <input class="question__field" type="email" name="email" id="field-email" required=""
+                    aria-required="true" placeholder="janedoe@example.com" autocomplete="email">
+            </li>
+            <li class="field-list__field-group">
+                <label for="field-message">What’s on your mind?</label>
+                <br>
+                <textarea id="field-message" name="message" rows="5" cols="100" required="" aria-required="true"
+                    spellcheck="true" autocapitalize="sentences">
+                </textarea>
+            </li>
+            <li hidden="">
+                <label>Don’t fill this out if you're human: <input name="bot-field">
+                </label>
+            </li>
+        </ol>
+        <button type="submit" class="button-link text-base weight-bold">Send message</button>
+    </form>
+</MainLayout>

@@ -1,0 +1,46 @@
+---
+// Layout import
+import MainLayout from "../layouts/MainLayout.astro";
+
+const title = "Thank you";
+const description = "Thanks page of Tiabidi";
+---
+
+<style>
+    .post__body {
+        --flow-space: 2.44rem;
+    }
+
+    .inner-wrapper {
+        max-width: 52rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .leading-loose {
+        line-height: 1.7;
+    }
+
+    .pad-top-900 {
+        padding-top: 3.05rem;
+    }
+
+    .pad-bottom-900 {
+        padding-bottom: 3.05rem;
+    }
+
+    .text-500 {
+        font-size: 1.25rem;
+    }
+</style>
+
+<MainLayout title={title} description={description} jumbo_title={title}>
+    <div class="post__body inner-wrapper leading-loose pad-top-900 pad-bottom-900 text-500">
+        <p>
+            This is your thank you page where if someone fills in your contact form, they will be directed to.
+            Make sure you add a nice message &#128512;
+        </p>
+    </div>
+</MainLayout>

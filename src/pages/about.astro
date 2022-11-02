@@ -1,0 +1,33 @@
+---
+// Layout import
+import MainLayout from "../layouts/MainLayout.astro";
+// Component import
+/*
+let allPosts = await Astro.glob('../data/*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+const recentPosts = allPosts.slice(0, 3);
+const readableDate = (date) => {
+    return new Date(date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+*/
+const title = "About";
+const description = "About page of Tiabidi";
+---
+
+<MainLayout title={title} description={description} jumbo_title={title}>
+    <h2>Learning, always</h2>
+    <p>
+        I'm a self-taught developer. What I love about being a developer is that we
+        can learn something new every day (even a tiny detail). In 2014, I wrote my
+        first few lines of HTML, and it was the start of an incredible journey.
+    </p>
+    <p id="things-love-learning">Things I currently love learning about:</p>
+    <ul aria-describedby="things-love-learning">
+        <li>
+            Web accessibility (semantic HTML, adopting an accessibility first approach,
+            understanding the WCAG)
+        </li>
+        <li>Jamstack</li>
+        <li>Dotnet development</li>
+    </ul>
+</MainLayout>

@@ -1,0 +1,19 @@
+---
+// Layout Import
+import MainLayout from '../../layouts/MainLayout.astro'
+
+const title = 'All tags'
+const description = 'All the tags used so far...'
+// Data Fetching: List all Markdown posts in the repo.
+const allPosts = await Astro.glob('../../data/*.md');
+const tags = [...new Set([].concat.apply([], allPosts.map(post => post.frontmatter.tags)))]
+---
+
+<MainLayout title={title} description={description} jumbo_title={title}>
+    <h2>Latest blog posts</h2>
+    <ul class="tag-list">
+        {tags.map((tag) => (
+        <li><a class="govuk-tag" href={`/tags/${tag}`} title={`View posts tagged under "${tag}" `}>#{tag}</a></li>
+        ))}
+    </ul>
+</MainLayout>

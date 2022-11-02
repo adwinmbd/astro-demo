@@ -1,0 +1,31 @@
+---
+// Layout Import
+import MainLayout from '../../layouts/MainLayout.astro'
+//Components
+import PostList from '../../components/PostList.astro'
+export async function getStaticPaths({ }) {
+    const allPosts = await Astro.glob('../../data/*.md');
+    const allTags = new Set()
+    allPosts.map(post => {
+        post.frontmatter.tags && post.frontmatter.tags.map(tag => allTags.add(tag.toLowerCase()))
+    })
+    return Array.from(allTags).map((tag) => {
+        const filteredPosts = allPosts.filter((post) => post.frontmatter.tags.includes(tag))
+        return {
+            params: { tag },
+            props: {
+                page: filteredPosts
+            }
+        };
+    });
+}
+const { page } = Astro.props;
+const { tag } = Astro.params;
+const title = `Posts by Tag: ${tag}`;
+const description = `all of the articles we've posted and linked so far under the tag: "${tag}"`;
+---
+
+<MainLayout title={title} description={description} jumbo_title={title}>
+    <h2>Latest blog posts</h2>
+    <PostList posts={page} />
+</MainLayout>

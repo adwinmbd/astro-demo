@@ -1,0 +1,18 @@
+---
+export interface Props {
+    jumbo_text?: string;
+    jumbo_title: string;
+}
+const { jumbo_text, jumbo_title } = Astro.props
+---
+
+<div class="intro pad-top-900 pad-bottom-max">
+    <div class="inner-wrapper">
+        <h1 class="post__title leading-tight">
+            {jumbo_title}
+        </h1>
+        <p>
+            {jumbo_text}
+        </p>
+    </div>
+</div>

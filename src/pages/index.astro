@@ -1,0 +1,37 @@
+---
+// Layout import
+import MainLayout from "../layouts/MainLayout.astro";
+// Component import
+let allPosts = await Astro.glob('../data/*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+const recentPosts = allPosts.slice(0, 3);
+const readableDate = (date) => {
+	return new Date(date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+const title = "Home";
+const description = "Home page of Tiabidi";
+const jumbo_title = "Welcome to Tiabidi.";
+const jumbo_text = "Here you will find web development thoughts, stories and ideas.";
+---
+
+<MainLayout title={title} description={description} jumbo_title={jumbo_title} jumbo_text={jumbo_text}>
+	<h2>Latest blog posts</h2>
+
+	<ul>
+		{recentPosts.map((post, index) => {
+		return (
+		<li>
+			<a href={`/post/${post.frontmatter.slug}`}>
+				{post.frontmatter.title}
+			</a>
+			<div>
+				<span class="post-list__date">{readableDate(post.frontmatter.date)}</span>
+			</div>
+		</li>
+		)
+		})}
+	</ul>
+
+	<a href="/blog" class="button-link">See all posts &rarr;</a>
+</MainLayout>

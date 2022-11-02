@@ -1,0 +1,16 @@
+---
+export interface Props {
+    title: string;
+    description: string;
+    permalink?: string;
+}
+const { title, description, permalink } = Astro.props
+---
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content={description} />
+<link rel="canonical" href="https://example.com/">
+<title>{title} | Tiabidi</title>
+<script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<!-- <link rel=" stylesheet" href="/site.css"> -->

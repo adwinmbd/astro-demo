@@ -1,0 +1,52 @@
+---
+import "../assets/site.css";
+import Seo from "../components/Seo.astro";
+import Hada from "../components/Hada.astro";
+// import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Jumbotron from "../components/Jumbotron.astro";
+const { description, jumbo_text, jumbo_title, title } = Astro.props;
+---
+
+<html lang="en">
+
+<head>
+    <Seo {title} {description} />
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- <Header /> -->
+        <Hada />
+        <Jumbotron {jumbo_text} {jumbo_title} />
+        <main id="main-content">
+            <div class="page-content-wrapper">
+                <slot />
+            </div>
+        </main>
+        <Footer />
+    </div>
+    <script>
+        !function () {
+            "use strict";
+            const e = document.querySelector("[data-menu-button]"),
+                t = document.querySelector("[data-menu-list]");
+            e && e.addEventListener("click", (function () {
+                t.classList.toggle("site-header__nav-list--visible"), e.setAttribute("aria-expanded", "true" === e.getAttribute("aria-expanded") ? "false" : "true")
+            }))
+        }();
+    </script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
