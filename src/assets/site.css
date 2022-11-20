@@ -304,6 +304,11 @@ code[class^="language"] {
   border-radius: 0;
   padding: 0;
 }
+
+pre code span.line {
+  margin: 1rem;
+}
+
 .max-width-wrapper,
 .page-content-wrapper {
   margin: 0 auto;
