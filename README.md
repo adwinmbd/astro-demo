@@ -71,8 +71,7 @@ Feel free to check [our documentation](https://github.com/withastro/astro) or ju
 
 ## Credits
 
+This template is inspired from works the following people :
+
 - [Andy Bell](https://github.com/hankchizljaw/hylia)
-- [Astro Blog](https://github.com/withastro/astro/tree/latest/examples/blog)
-- [Netlify CMS](https://www.netlifycms.org)
 - [Olivia Coumans](https://github.com/liv7c/devblog)
-- [Prism Themes](https://github.com/PrismJS/prism-themes)
